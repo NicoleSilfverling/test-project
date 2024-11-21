@@ -3,20 +3,20 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Change if your default branch is named differently
+      - main # Change if your default branch is different
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20 # Ensure using the latest Node.js LTS version
+          node-version: 20 # Use the latest LTS version of Node.js
 
       - name: Install dependencies
         run: npm install
@@ -25,9 +25,10 @@ jobs:
         run: npm run build
 
       - name: Upload artifact for deployment
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4 # Updated to use v4
         with:
-          path: dist # Vite's default build output directory
+          name: github-pages # Ensure this name matches with your deployment step
+          path: dist # Path to your built assets (Vite default is 'dist')
 
   deploy:
     needs: build
@@ -37,4 +38,4 @@ jobs:
       id-token: write
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 # Make sure you're using the latest version
