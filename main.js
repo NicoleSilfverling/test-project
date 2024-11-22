@@ -2,6 +2,10 @@ import "./style.scss";
 import javascriptLogo from "./javascript.svg";
 import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
+const imagePath = new URL(
+  "./assets/images/products/portobello.JPG",
+  import.meta.url
+).href;
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -18,7 +22,7 @@ document.querySelector("#app").innerHTML = `
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
-          <img src="../assets/images/products/portobello.JPG" alt="mushie" />
+          <img src="${imagePath}" alt="mushie" />
 
   </div>
 `;
