@@ -13,7 +13,7 @@
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
-    <img src="./assets/images/products/portobello.jpg" alt="mushie" />
+    <img src="./images/products/portobello.jpg" alt="mushie" />
 
   </div>
 `;a(document.querySelector("#counter"));
